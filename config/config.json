@@ -1,0 +1,56 @@
+{
+  "port": "8081",
+  "path": {
+    "root": "${pwd}/dist",
+    "client": "usr",
+    "resources": "etc",
+    "server": "srv"
+  },
+  "server": {
+    "response": {
+      "headers": {"origins": ["http://localhost:8081"]}
+    }
+  },
+  "log4js": {
+    "cwd": "",
+    "appenders": {
+      "http": {
+        "type": "dateFile",
+        "filename": "log/typescript-koa-http.log",
+        "pattern": "-yyyy-MM-dd",
+        "alwaysIncludePattern": false
+      },
+      "typescript-koa": {
+        "type": "dateFile",
+        "filename": "log/typescript-koa.log",
+        "pattern": "-yyyy-MM-dd",
+        "alwaysIncludePattern": false
+      }
+    },
+    "categories": {
+      "default": {
+        "appenders": [
+          "typescript-koa"
+        ],
+        "level": "info"
+      },
+      "http": {
+        "appenders": [
+          "http"
+        ],
+        "level": "info"
+      },
+      "typescript-koa": {
+        "appenders": [
+          "typescript-koa"
+        ],
+        "level": "info"
+      }
+    }
+  },
+  "rosetta": {
+    "baseUrl": "http://172.21.42.11:8080"
+  },
+  "wallet": "${pwd}/wallet/",
+  "address": "${pwd}/address/"
+}
